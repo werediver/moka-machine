@@ -2,25 +2,34 @@
 
 ## An off-the-shelf resonant driver
 
-<small>2022-09-27 Tuesday (or later)</small>
+_2022-09-27 Tuesday (or later)_
 
 For a proof-of-concept prototype I've got an off-the-shelf resonant driver from AliExpress ([lot](https://www.aliexpress.com/item/33010919113.html)).
 
 Below are the oscillograms of the gate and drain voltages of the power MOSFETs of the driver with no load (no big difference under load).
 
-![Resonant driver gate voltages](images/001%20ZVS%20gate%20voltage.png) ![Resonant driver drain voltages](images/002%20ZVS%20drain%20voltage.png)
+<p width="100%">
+<img width="49%" alt="Resonant driver gate voltages" src="images/001%20ZVS%20gate%20voltage.png">
+<img width="49%" alt="Resonant driver drain voltages" src="images/002%20ZVS%20drain%20voltage.png">
+</p>
 
 This driver is well described on the page ["1000 Watt ZVS Induction Heater Notes"](https://spaco.org/Blacksmithing/ZVSInductionHeater/1000WattZVSInductionHeaterNotes.htm).
 
 ## Resonant driver control interface
 
-<small>2022-10-01 Saturday, 2022-10-02 Sunday</small>
+_2022-10-01 Saturday, 2022-10-02 Sunday_
 
 The old technique of scratching out a circuit board combined with SMD components.
 
-![Control attachment back](images/003%20IMG_4103.jpeg) ![Control attachment front](images/004%20IMG_4104.jpeg)
+<p width="100%">
+<img width="49%" alt="Control attachment back" src="images/003%20IMG_4103.jpeg">
+<img width="49%" alt="Control attachment front" src="images/004%20IMG_4104.jpeg">
+</p>
 
-![Control attachment installed](images/005%20IMG_4105.jpeg) ![Control attachment connector](images/006%20IMG_4106.jpeg)
+<p width="100%">
+<img width="49%" alt="Control attachment installed" src="images/005%20IMG_4105.jpeg">
+<img width="49%" alt="Control attachment connector" src="images/006%20IMG_4106.jpeg">
+</p>
 
 And the new coil, unfinished.
 
@@ -28,7 +37,7 @@ And the new coil, unfinished.
 
 ## The new coil
 
-<small>2022-10-03 Monday</small>
+_2022-10-03 Monday_
 
 An attempt to boil a tiny amount of water with the coil.
 
@@ -39,6 +48,8 @@ During the test I've realized that the coil wire near the mounting points is too
 ![A better way to mount the coil](images/009%20IMG_4109.jpeg)
 
 ## A super rough estimation of power at higher supply voltages
+
+_2022-10-04 Tuesday_
 
 Shouldn't have even attempted it.
 
