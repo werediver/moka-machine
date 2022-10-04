@@ -31,7 +31,7 @@ The old technique of scratching out a circuit board combined with SMD components
 <img width="49%" alt="Control attachment connector" src="images/006%20IMG_4106.jpeg">
 </p>
 
-And the new coil, unfinished.
+And the new coil made of 4x1 mm² "audio" cable, unfinished. The cross-section of the pipe of the original coil is around 10 mm².
 
 ![The new coil, unfinished](images/007%20IMG_4107.jpeg)
 
@@ -39,7 +39,7 @@ And the new coil, unfinished.
 
 _2022-10-03 Monday_
 
-An attempt to boil a tiny amount of water with the coil.
+An attempt to boil a tiny amount of water with the coil. With the supply voltage of 15 V the current consumption is 4.47 A, about 67 W. The water heated up to 50℃.
 
 ![The new coil test](images/008%20IMG_4108.jpeg)
 
