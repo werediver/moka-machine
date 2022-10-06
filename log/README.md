@@ -9,8 +9,8 @@ For a proof-of-concept prototype I've got an off-the-shelf resonant driver from 
 Below are the oscillograms of the gate and drain voltages of the power MOSFETs of the driver with no load (no big difference under load).
 
 <p width="100%">
-<img width="49%" alt="Resonant driver gate voltages" src="images/001%20ZVS%20gate%20voltage.png">
-<img width="49%" alt="Resonant driver drain voltages" src="images/002%20ZVS%20drain%20voltage.png">
+<img width="49%" alt="Resonant driver gate voltages" src="images/001%20Resonant driver%20gate%20voltage.png">
+<img width="49%" alt="Resonant driver drain voltages" src="images/002%20Resonant driver%20drain%20voltage.png">
 </p>
 
 This driver is well described on the page ["1000 Watt ZVS Induction Heater Notes"](https://spaco.org/Blacksmithing/ZVSInductionHeater/1000WattZVSInductionHeaterNotes.htm).
@@ -56,3 +56,13 @@ Shouldn't have even attempted it.
 ![A super rough estimation of power at higher supply voltages](images/010%20IMG_4112.jpeg)
 
 On the other hand, if this is even remotely in the right ballpark, it supports my original idea of using a 24 V 400 W power supply for the PoC.
+
+## Ways to achieve higher power
+
+_2022-10-05 Wednesday_
+
+Those 67 W with 15 V x 4.47 A input is close to the current limit of my lab PSU, so I wouldn't be able to just raise the voltage to achieve (much) higher output power. I have two of PSUs, though. With some further modification of the driver circuit, a split PSU may be used to power it, thus doubling the output power.
+
+![Resonant driver Split PSU](images/011%20Resonant%20driver%20split%20PSU.png)
+
+Or I could use some balancing resistors and just connect the two PSUs in parallel.
