@@ -6,7 +6,7 @@ _2022-09-27 Tuesday (or later)_
 
 For a proof-of-concept prototype I've got an off-the-shelf resonant driver from AliExpress ([lot](https://www.aliexpress.com/item/33010919113.html)).
 
-Below are the oscillograms of the gate and drain voltages of the power MOSFETs of the driver with no load (no big difference under load).
+Below are the oscillograms of the gate and drain voltages of the power MOSFETs of the driver with no load (no big difference under load) with 12 V supply.
 
 <p width="100%">
 <img width="49%" alt="Resonant driver gate voltages" src="images/001%20Resonant driver%20gate%20voltage.png">
