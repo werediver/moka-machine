@@ -2,6 +2,7 @@ use cortex_m::peripheral::{syst::SystClkSource, SYST};
 use cortex_m_rt::exception;
 
 use app_core::common::Instant;
+use fugit::Duration;
 
 pub struct Uptime {
     _syst: SYST,
@@ -28,6 +29,24 @@ impl Uptime {
 
     pub fn get_instant() -> Instant {
         Instant::from_ticks(Self::get_us())
+    }
+
+    pub fn delay_us(us: u64) {
+        let start = Self::get_instant();
+        let delay = Duration::<u64, 1, 1_000_000>::from_ticks(us);
+        let end = start
+            .checked_add_duration(delay)
+            .expect("uptime must not overflow during the delay");
+        while Self::get_instant() < end {}
+    }
+
+    pub fn delay_ms(ms: u64) {
+        let start = Self::get_instant();
+        let delay = Duration::<u64, 1, 1_000>::from_ticks(ms);
+        let end = start
+            .checked_add_duration(delay)
+            .expect("uptime must not overflow during the delay");
+        while Self::get_instant() < end {}
     }
 }
 

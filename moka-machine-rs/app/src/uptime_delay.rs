@@ -1,16 +1,15 @@
-use embedded_hal::blocking::delay::DelayMs;
-use fugit::Duration;
+use embedded_hal::blocking::delay::{DelayMs, DelayUs};
 
 use crate::uptime::Uptime;
 
+impl DelayUs<u64> for Uptime {
+    fn delay_us(&mut self, us: u64) {
+        Uptime::delay_us(us)
+    }
+}
+
 impl DelayMs<u64> for Uptime {
-    // Does not mutate `self`.
     fn delay_ms(&mut self, ms: u64) {
-        let start = Self::get_instant();
-        let delay = Duration::<u64, 1, 1_000>::from_ticks(ms);
-        let end = start
-            .checked_add_duration(delay)
-            .expect("uptime must not overflow during the delay");
-        while Self::get_instant() < end {}
+        Uptime::delay_ms(ms)
     }
 }
