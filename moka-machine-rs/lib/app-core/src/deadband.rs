@@ -3,6 +3,7 @@ use core::{
     ops::{Bound, RangeBounds},
 };
 
+#[derive(Copy, Clone, Debug)]
 pub struct Deadband<R, T>
 where
     T: ?Sized,

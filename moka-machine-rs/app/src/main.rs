@@ -9,8 +9,9 @@ mod uptime_delay;
 use core::{alloc::Layout, panic::PanicInfo};
 
 use alloc_cortex_m::CortexMHeap;
+use app_core::controller::{Action, Controller};
 use bsp::hal::{clocks::init_clocks_and_plls, entry, pac, Clock, Sio, Watchdog, I2C};
-use embedded_hal::{adc::OneShot, blocking::delay::DelayMs};
+use embedded_hal::{adc::OneShot, blocking::delay::DelayMs, digital::v2::OutputPin};
 use rp_pico as bsp;
 use rp_pico::hal;
 
@@ -55,6 +56,25 @@ fn main() -> ! {
     .ok()
     .unwrap();
 
+    let mut led_pin = pins.led.into_push_pull_output();
+    let mut heater_a = pins.gpio14.into_push_pull_output();
+    let mut heater_b = pins.gpio15.into_push_pull_output();
+
+    let mut enable_heater = move |enable: bool| {
+        if enable {
+            led_pin.set_high().unwrap();
+
+            heater_a.set_low().unwrap();
+            Uptime::delay_us(100);
+            heater_b.set_low().unwrap();
+        } else {
+            led_pin.set_low().unwrap();
+
+            heater_a.set_high().unwrap();
+            heater_b.set_high().unwrap();
+        }
+    };
+
     let i2c = I2C::i2c0(
         pac.I2C0,
         pins.gpio12.into_mode(),
@@ -69,6 +89,9 @@ fn main() -> ! {
 
     let mut ncir = Mlx9061x::new_mlx90614(i2c, SlaveAddr::default(), 100).unwrap();
 
+    let mut controller = Controller::new(1.0);
+    controller.set_target_temp(Some(30.0));
+
     loop {
         let raw = adc.read(&mut mcu_temp_sensor).unwrap();
         let mcu_temp = pico_temp(raw);
@@ -76,7 +99,15 @@ fn main() -> ! {
         let obj_temp = ncir.object1_temperature().unwrap();
         rprintln!("mcu: {:.2}", mcu_temp);
         rprintln!("amb: {:.2}, obj: {:.2}", amb_temp, obj_temp);
-        uptime.delay_ms(500);
+
+        if let Some(action) = controller.update(obj_temp) {
+            match action {
+                Action::EnableHeater => enable_heater(true),
+                Action::DisableHeater => enable_heater(false),
+            }
+        }
+
+        uptime.delay_ms(200);
     }
 }
 
