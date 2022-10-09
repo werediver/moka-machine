@@ -76,7 +76,7 @@ Or I could use some balancing resistors and just connect the two PSUs in paralle
 
 _2022-10-08 Saturday_
 
-I implemented some basic (bang-bang with a deadband) closed loop control logic in the firmware and ran a test.
+I implemented some basic (bang-bang with a deadband ±0.2℃ as per the NCIR thermometer) closed loop control logic in the firmware and ran a test.
 
 At first, the program was stopping when the resonant converter was turning on or off. Trying to fight this I put ferrite rings on the longest wires coming to the NCIR thermometer and the resonant converter.
 
@@ -89,3 +89,5 @@ That didn't have sufficient effect, so I had to use stronger countermeasures...
 After which some stability was achieved and I could keep the target (a steel steaming pitcher) at a set temperature.
 
 Maybe not very spectacular, but here is [a short video](https://odysee.com/@werediver:d/moka-machine-01:7?r=EgVnnPDpYAySnwJ9STYyvCuVqFXdCxUz).
+
+Notice that I'm using the oscilloscope ground lead as a makeshift EMI probe. Learned the trick in [this video](https://youtu.be/WytDROmjWKQ?t=129).
