@@ -2,7 +2,7 @@
 
 ## An off-the-shelf resonant driver
 
-_2022-09-27 Tuesday (or later)_
+_2022-09-27 Tuesday (or a few days later)_
 
 For a proof-of-concept prototype I've got an off-the-shelf resonant driver from AliExpress ([lot](https://www.aliexpress.com/item/33010919113.html)).
 
@@ -51,11 +51,16 @@ During the test I've realized that the coil wire near the mounting points is too
 
 _2022-10-04 Tuesday_
 
-Shouldn't have even attempted it.
+<details>
+<summary>
+Shouldn't have even attempted it
+</summary>
 
 ![A super rough estimation of power at higher supply voltages](images/010%20IMG_4112.jpeg)
 
-On the other hand, if this is even remotely in the right ballpark, it supports my original idea of using a 24 V 400 W power supply for the PoC.
+</details>
+
+Difficult to make a prediction, but my slightly educated guess is that at 24 V a 400 W power supply should be sufficient for this contraption.
 
 ## Ways to achieve higher power
 
@@ -66,3 +71,21 @@ Those 67 W with 15 V x 4.47 A input is close to the current limit of my lab PSU,
 ![Resonant driver Split PSU](images/011%20Resonant%20driver%20split%20PSU.png)
 
 Or I could use some balancing resistors and just connect the two PSUs in parallel.
+
+## Closed loop control
+
+_2022-10-08 Saturday_
+
+I implemented some basic (bang-bang with a deadband) closed loop control logic in the firmware and ran a test.
+
+At first, the program was stopping when the resonant converter was turning on or off. Trying to fight this I put ferrite rings on the longest wires coming to the NCIR thermometer and the resonant converter.
+
+![Pico attached to the NCIR thermometer and the resonant converter](images/012%20IMG_4119.jpeg)
+
+That didn't have sufficient effect, so I had to use stronger countermeasures...
+
+![A test set-up with closed loop control](images/013%20IMG_4117.jpeg)
+
+After which some stability was achieved and I could keep the target (a steel steaming pitcher) at a set temperature.
+
+Maybe not very spectacular, but here is [a short video](https://odysee.com/@werediver:d/moka-machine-01:7?r=EgVnnPDpYAySnwJ9STYyvCuVqFXdCxUz).
