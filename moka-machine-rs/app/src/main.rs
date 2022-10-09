@@ -16,6 +16,7 @@ use rp_pico as bsp;
 use rp_pico::hal;
 
 use fugit::RateExtU32;
+use libm::fabsf;
 use rtt_target::{rprintln, rtt_init_print};
 
 use mlx9061x::{Mlx9061x, SlaveAddr};
@@ -89,14 +90,23 @@ fn main() -> ! {
 
     let mut ncir = Mlx9061x::new_mlx90614(i2c, SlaveAddr::default(), 100).unwrap();
 
-    let mut controller = Controller::new(1.0);
-    controller.set_target_temp(Some(30.0));
+    let mut controller = Controller::new(0.2);
+    controller.set_target_temp(Some(45.0));
+
+    rprintln!("Ready");
+    enable_heater(false);
+    if fabsf(ncir.emissivity().unwrap() - 0.8) > 0.001 {
+        const EMISSIVITY: f32 = 0.8;
+        rprintln!("Setting NCIR emissivity to {}", EMISSIVITY);
+        ncir.set_emissivity(EMISSIVITY, &mut uptime);
+    }
+    Uptime::delay_ms(2000);
 
     loop {
         let raw = adc.read(&mut mcu_temp_sensor).unwrap();
         let mcu_temp = pico_temp(raw);
-        let amb_temp = ncir.ambient_temperature().unwrap();
-        let obj_temp = ncir.object1_temperature().unwrap();
+        let amb_temp = ncir.ambient_temperature().unwrap_or(f32::NAN);
+        let obj_temp = ncir.object1_temperature().unwrap_or(f32::NAN);
         rprintln!("mcu: {:.2}", mcu_temp);
         rprintln!("amb: {:.2}, obj: {:.2}", amb_temp, obj_temp);
 
@@ -107,7 +117,7 @@ fn main() -> ! {
             }
         }
 
-        uptime.delay_ms(200);
+        Uptime::delay_ms(200);
     }
 }
 

@@ -8,6 +8,12 @@ impl DelayUs<u64> for Uptime {
     }
 }
 
+impl DelayMs<u8> for Uptime {
+    fn delay_ms(&mut self, ms: u8) {
+        Uptime::delay_ms(ms as u64)
+    }
+}
+
 impl DelayMs<u64> for Uptime {
     fn delay_ms(&mut self, ms: u64) {
         Uptime::delay_ms(ms)

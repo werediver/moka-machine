@@ -31,6 +31,7 @@ dependencies = [
  "cortex-m-rt",
  "embedded-hal",
  "fugit",
+ "libm",
  "mlx9061x",
  "rp-pico",
  "rtt-target",
