@@ -91,3 +91,14 @@ After which some stability was achieved and I could keep the target (a steel ste
 Maybe not very spectacular, but here is [a short video](https://odysee.com/@werediver:d/moka-machine-01:7?r=EgVnnPDpYAySnwJ9STYyvCuVqFXdCxUz).
 
 Notice that I'm using the oscilloscope ground lead as a makeshift EMI probe. Learned the trick in [this video](https://youtu.be/WytDROmjWKQ?t=129).
+
+## It was ~~DNS~~ the debug probe
+
+_2022-10-09 Sunday_
+
+After some more experimentation and debugging I made two conclusions:
+
+- the issues on the heater start/stop were not with the controller, but rather with the debug probe: even though RTT debug output was stopping, the controller was still running (confirmed with oscilloscope-assisted debugging)
+- the NCIR thermometer really likes black and/or high IR emissivity objects or it gives underestimated (possibly, influenced by the reflected surroundings) readings and setting a lower object emissivity parameter seems to give somewhat unstable results (quite sensitive to the sensor position)
+
+Besides, I'm not sure about the resonant converter start-up time: shorter time-base measurements show under 400 us start-up and shutdown times, but longer time-base measurements show up to about 40 ms start-up time (the shutdown time is still short). Was I missing some larger-scale dynamics on the short-time base?
