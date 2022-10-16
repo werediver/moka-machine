@@ -78,7 +78,7 @@ _2022-10-08 Saturday_
 
 I implemented some basic (bang-bang with a deadband ±0.2℃ as per the NCIR thermometer) closed loop control logic in the firmware and ran a test.
 
-At first, the program was stopping when the resonant converter was turning on or off. Trying to fight this I put ferrite rings on the longest wires coming to the NCIR thermometer and the resonant converter.
+At first, it looked like the program was stopping when the resonant converter was turning on or off. Trying to fight this I put ferrite rings on the longest wires coming to the NCIR thermometer and the resonant converter.
 
 ![Pico attached to the NCIR thermometer and the resonant converter](images/012%20IMG_4119.jpeg)
 
