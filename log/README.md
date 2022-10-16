@@ -101,4 +101,4 @@ After some more experimentation and debugging I made two conclusions:
 - the issues on the heater start/stop were not with the controller, but rather with the debug probe: even though RTT debug output was stopping, the controller was still running (confirmed with oscilloscope-assisted debugging)
 - the NCIR thermometer really likes black and/or high IR emissivity objects or it gives underestimated (possibly, influenced by the reflected surroundings) readings and setting a lower object emissivity parameter seems to give somewhat unstable results (quite sensitive to the sensor position)
 
-Besides, I'm not sure about the resonant converter start-up time: shorter time-base measurements show under 400 us start-up and shutdown times, but longer time-base measurements show up to about 40 ms start-up time (the shutdown time is still short). Was I missing some larger-scale dynamics on the short-time base?
+Under that particular load and power supply parameters (~13.8 V x 5 A) the resonant converter starts oscillating 1.6 ms after activation and reaches full amplitude in about 30 ms.
