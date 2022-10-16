@@ -102,3 +102,13 @@ After some more experimentation and debugging I made two conclusions:
 - the NCIR thermometer really likes black and/or high IR emissivity objects or it gives underestimated (possibly, influenced by the reflected surroundings) readings and setting a lower object emissivity parameter seems to give somewhat unstable results (quite sensitive to the sensor position)
 
 Under that particular load and power supply parameters (~13.8 V x 5 A) the resonant converter starts oscillating 1.6 ms after activation and reaches full amplitude in about 30 ms.
+
+## Display
+
+_2022-10-16 Sunday_
+
+I received some monochrome 1.3" 128x64 SH1106 displays with I²C (400 kHz) interface and added one to the moka machine prototype. It may turn out a tad handier to see the temperature readings on a display rather than in the RTT log.
+
+I also received a 24 V 400 W lighting PSU, but am yet to test it with the induction heater.
+
+![Pico and an SH1106 display on a breadboard](images/014%20IMG_4139.jpeg)
