@@ -10,7 +10,7 @@ where
     R: RangeBounds<T>,
 {
     bounds: R,
-    _n: PhantomData<*const T>,
+    _t: PhantomData<*const T>,
 }
 
 #[derive(Copy, Clone, PartialEq, Eq, Debug)]
@@ -27,7 +27,7 @@ where
     pub fn new(bounds: R) -> Self {
         Self {
             bounds,
-            _n: Default::default(),
+            _t: Default::default(),
         }
     }
 

@@ -16,4 +16,7 @@ fugit = "0.3.6"
 
 mlx9061x = "0.2.0"
 
+embedded-graphics = "0.7.1"
+sh1106 = "0.4.0"
+
 app-core = { path = "../lib/app-core" }
